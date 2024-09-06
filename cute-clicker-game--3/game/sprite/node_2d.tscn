@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7epbuj5hp3tk"]
+
+[ext_resource type="Texture2D" uid="uid://dwx8ctjid25vp" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-1.png" id="1_2red2"]
+[ext_resource type="Texture2D" uid="uid://d2olea51ldu1y" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-2.png" id="2_enfaj"]
+[ext_resource type="Texture2D" uid="uid://d3camfbft2k26" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-3.png" id="3_h4lm5"]
+[ext_resource type="Texture2D" uid="uid://dchn25hodihbq" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-4.png" id="4_od2ru"]
+[ext_resource type="Texture2D" uid="uid://drvmrim1e37fw" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-5.png" id="5_lw221"]
+[ext_resource type="Texture2D" uid="uid://dejgqqaggb18b" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-6.png" id="6_5bwti"]
+[ext_resource type="Texture2D" uid="uid://vw3kr5gcnsw7" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-7.png" id="7_dxkwy"]
+[ext_resource type="Texture2D" uid="uid://7k6msw2xhcw3" path="res://ui/textures/sprite/Monkey/HighQuality/Untitled_Artwork-8.png" id="8_h5xki"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehqa4"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("1_2red2")
+}, {
+"duration": 0.5,
+"texture": ExtResource("2_enfaj")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_h4lm5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_od2ru")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_lw221")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_5bwti")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_dxkwy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_h5xki")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ehqa4")
+frame = 6
+frame_progress = 0.662983

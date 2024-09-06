@@ -1,0 +1,234 @@
+[gd_scene load_steps=14 format=3 uid="uid://ceiv8ufwmvr2o"]
+
+[ext_resource type="Texture2D" uid="uid://c1xhu4wo6b747" path="res://ui/textures/Clouds/Clouds 2/1.png" id="1_kd2ja"]
+[ext_resource type="Texture2D" uid="uid://butjkakpkd16b" path="res://ui/textures/Clouds/Clouds 2/2.png" id="2_jpep7"]
+[ext_resource type="Texture2D" uid="uid://d0n03b8i1iydi" path="res://ui/textures/Clouds/Clouds 2/3.png" id="3_6udtr"]
+[ext_resource type="Texture2D" uid="uid://dx2xt6mgrt8fk" path="res://ui/textures/Clouds/Clouds 2/4.png" id="4_yvo5q"]
+[ext_resource type="Texture2D" uid="uid://ds4woua2kuaq3" path="res://ui/textures/05.png" id="5_is303"]
+[ext_resource type="FontFile" uid="uid://caavwcyroqv5p" path="res://ui/textures/m5x7.ttf" id="6_3xx6o"]
+[ext_resource type="Texture2D" uid="uid://clt6m7jtr4jdx" path="res://ui/textures/game UI.png" id="7_14a1v"]
+[ext_resource type="Texture2D" uid="uid://brxd3cqiop6ps" path="res://ui/textures/04.png" id="8_14xa0"]
+
+[sub_resource type="GDScript" id="GDScript_lsncd"]
+script/source = "extends ParallaxBackground
+
+var scroll_speed: Vector2 = Vector2(20, 0)
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	scroll_offset += scroll_speed * delta
+	
+"
+
+[sub_resource type="GDScript" id="GDScript_gt0rd"]
+script/source = "extends CenterContainer
+
+@onready var possible_animals = [
+	preload(\"res://game/sprite/monkey_sprite.tscn\"),
+	preload(\"res://game/sprite/owl.tscn\"),
+	preload(\"res://game/sprite/porcupite.tscn\"),
+	preload(\"res://game/sprite/rabbit.tscn\")
+]
+
+var current_animal: Node2D = null
+var clicks_to_change: int = 0  
+var total_clicks: int = 0 
+@onready var click_count_label = $\"../TextureRect/ClickCountLabel\"
+@onready var center = $\".\"
+@onready var rand_click_label = $\"../TextureRect3\"
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	randomize()
+	spawn_animal()
+	update_click_count_label()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func update_click_count_label():
+	click_count_label.text = str(total_clicks)
+	#if click_count == 0:
+	#	click_count_label.text = str(\"Click 5 times to change the animal\")
+	#else:
+	#	click_count_label.text = str(click_count)
+	
+
+func spawn_animal():
+	if current_animal:
+		current_animal.queue_free()
+	var rand = randi() % possible_animals.size()
+	var animal_scene = possible_animals[rand]
+	current_animal = animal_scene.instantiate()
+	for child in get_children():
+		child.queue_free()
+	add_child(current_animal)
+	size = get_viewport_rect().size
+	current_animal.position = Vector2.ZERO
+	current_animal.connect(\"input_event\", Callable(self, \"_on_animal_input_event\"))
+	clicks_to_change = 0
+	update_click_count_label()
+
+func _on_animal_input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		clicks_to_change += 1
+		total_clicks += 1
+		update_click_count_label()
+		print(\"Clicks to change: \", clicks_to_change)
+		print(\"Total clicks: \", total_clicks)
+		if clicks_to_change >= 5: 
+			spawn_animal()
+
+
+func _on_texture_button_pressed():
+	get_tree().quit()
+
+
+func _on_timer_timeout():
+	rand_click_label.visible = false
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_somk4"]
+atlas = ExtResource("5_is303")
+region = Rect2(48, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfck7"]
+atlas = ExtResource("7_14a1v")
+region = Rect2(417, 483, 9, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4qqk"]
+atlas = ExtResource("8_14xa0")
+region = Rect2(0, 118, 80, 23)
+
+[node name="TextureRect" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource("GDScript_lsncd")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+scale = Vector2(1.04167, 1.08642)
+texture = ExtResource("1_kd2ja")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+scale = Vector2(1.04167, 1.08642)
+texture = ExtResource("2_jpep7")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+scale = Vector2(1.04167, 1.08642)
+texture = ExtResource("3_6udtr")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 0)
+motion_mirroring = Vector2(600, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4"]
+scale = Vector2(1.04167, 1.08642)
+texture = ExtResource("4_yvo5q")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_gt0rd")
+
+[node name="Timer" type="Timer" parent="CenterContainer"]
+wait_time = 10.0
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 520.0
+offset_top = 160.0
+offset_right = 584.0
+offset_bottom = 254.0
+texture = SubResource("AtlasTexture_somk4")
+
+[node name="ClickCountLabel" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 48.0
+offset_bottom = 80.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_3xx6o")
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -16.0
+offset_bottom = 16.0
+grow_horizontal = 0
+texture_normal = SubResource("AtlasTexture_tfck7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -88.0
+offset_right = 88.0
+offset_bottom = 80.0
+grow_horizontal = 2
+texture = SubResource("AtlasTexture_q4qqk")
+
+[node name="ChangeAnimalLabel" type="Label" parent="TextureRect3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 8.0
+offset_right = -20.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_3xx6o")
+text = "Click 5 times
+to change the animal"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="CenterContainer/Timer" to="CenterContainer" method="_on_timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="CenterContainer" method="_on_texture_button_pressed"]

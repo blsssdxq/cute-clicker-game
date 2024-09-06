@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://c62d4uak58nck"]
+
+[ext_resource type="PackedScene" uid="uid://5alw1q1jry3f" path="res://game/sprite/monkey_sprite.tscn" id="1_a7du8"]
+[ext_resource type="Texture2D" uid="uid://di3ns1rntj201" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-1.png" id="2_cbuar"]
+[ext_resource type="Texture2D" uid="uid://d3s42d7x53j7r" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-2.png" id="3_2roxi"]
+[ext_resource type="Texture2D" uid="uid://p340kiu8ywsk" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-3.png" id="4_potq7"]
+[ext_resource type="Texture2D" uid="uid://cqumbd1088jhv" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-4.png" id="5_yjm12"]
+[ext_resource type="Texture2D" uid="uid://cysfsqc4217sq" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-5.png" id="6_qyehh"]
+[ext_resource type="Texture2D" uid="uid://bit85qq60t6g3" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-6.png" id="7_wu76y"]
+[ext_resource type="Texture2D" uid="uid://crmbtlm2o38r5" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-7.png" id="8_cy5o4"]
+[ext_resource type="Texture2D" uid="uid://ff2k2ry54uev" path="res://ui/textures/sprite/Owl/HighQuality/Untitled_Artwork-8.png" id="9_evlgy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wpgat"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_cbuar")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_2roxi")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_potq7")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_yjm12")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_qyehh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_wu76y")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_cy5o4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_evlgy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" instance=ExtResource("1_a7du8")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_wpgat")
+frame_progress = 0.590086

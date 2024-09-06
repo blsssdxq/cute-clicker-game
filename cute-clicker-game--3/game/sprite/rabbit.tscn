@@ -1,0 +1,49 @@
+[gd_scene load_steps=11 format=3 uid="uid://c2lg03aw4mb5a"]
+
+[ext_resource type="PackedScene" uid="uid://5alw1q1jry3f" path="res://game/sprite/monkey_sprite.tscn" id="1_i7xll"]
+[ext_resource type="Texture2D" uid="uid://dr6edhhtyg6yh" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-1(1).png" id="2_hjp5h"]
+[ext_resource type="Texture2D" uid="uid://c5fva6fsdimw" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-2(1).png" id="3_agioy"]
+[ext_resource type="Texture2D" uid="uid://bumup8g6wtra" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-3(1).png" id="4_78sf5"]
+[ext_resource type="Texture2D" uid="uid://cfi347urhi6aa" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-4(1).png" id="5_kg6x8"]
+[ext_resource type="Texture2D" uid="uid://q3j3eqnlf48k" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-5(1).png" id="6_8ku27"]
+[ext_resource type="Texture2D" uid="uid://cp7d6rf453hf0" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-6(1).png" id="7_onts0"]
+[ext_resource type="Texture2D" uid="uid://b1xs4e8uv0fft" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-7(1).png" id="8_04erv"]
+[ext_resource type="Texture2D" uid="uid://ticy6sij4ie" path="res://ui/textures/sprite/Rabbit/HighQuality/Untitled_Artwork-8(1).png" id="9_hwedw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ublaj"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_hjp5h")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_agioy")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_78sf5")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_kg6x8")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_8ku27")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_onts0")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_04erv")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_hwedw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" instance=ExtResource("1_i7xll")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_ublaj")
+frame_progress = 0.267732

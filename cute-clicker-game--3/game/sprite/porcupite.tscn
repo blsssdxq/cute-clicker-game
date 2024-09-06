@@ -1,0 +1,50 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba2lts7ybg7ba"]
+
+[ext_resource type="PackedScene" uid="uid://5alw1q1jry3f" path="res://game/sprite/monkey_sprite.tscn" id="1_tgcd8"]
+[ext_resource type="Texture2D" uid="uid://br4e0byqvtntj" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-1.png" id="2_v3hhh"]
+[ext_resource type="Texture2D" uid="uid://btiobe8lipvid" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-2.png" id="3_kamaf"]
+[ext_resource type="Texture2D" uid="uid://b365gkls3tw52" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-3.png" id="4_a621i"]
+[ext_resource type="Texture2D" uid="uid://bqfe23wan7ciq" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-4.png" id="5_l5era"]
+[ext_resource type="Texture2D" uid="uid://bcxijx2oan6l6" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-5.png" id="6_etvj6"]
+[ext_resource type="Texture2D" uid="uid://dceu0lednpues" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-6.png" id="7_nmqlq"]
+[ext_resource type="Texture2D" uid="uid://nwt8p3lyrm6b" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-7.png" id="8_3mn8f"]
+[ext_resource type="Texture2D" uid="uid://c5j7426576tj" path="res://ui/textures/sprite/Porcupine/HighQuality/Untitled_Artwork-8.png" id="9_vhd5a"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kxlkk"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": ExtResource("2_v3hhh")
+}, {
+"duration": 0.5,
+"texture": ExtResource("3_kamaf")
+}, {
+"duration": 0.5,
+"texture": ExtResource("4_a621i")
+}, {
+"duration": 0.5,
+"texture": ExtResource("5_l5era")
+}, {
+"duration": 0.5,
+"texture": ExtResource("6_etvj6")
+}, {
+"duration": 0.5,
+"texture": ExtResource("7_nmqlq")
+}, {
+"duration": 0.5,
+"texture": ExtResource("8_3mn8f")
+}, {
+"duration": 0.5,
+"texture": ExtResource("9_vhd5a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Node2D" instance=ExtResource("1_tgcd8")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = SubResource("SpriteFrames_kxlkk")
+frame = 2
+frame_progress = 0.315597
